@@ -1,5 +1,13 @@
 #!/bin/bash
-touch backend2.txt
+
+# Load PAT from an environment variable or a file
+GITHUB_TOKEN=$GITHUB_TOKEN
+
+#Git commands
+touch file backend3.txt
 git add .
-git commit -m "New File added1"
-git push origin main
+git commit -m "add files"
+
+# Using the token for authentication
+git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $(echo -n "username:$GITHUB_TOKEN" | base64)" push
+
